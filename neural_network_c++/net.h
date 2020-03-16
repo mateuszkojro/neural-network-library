@@ -9,24 +9,29 @@ class net
 private:
 public:
 	int input_size;
-	matrix* input;
+	matrix input;
 
 	int output_size;
-	matrix* output;
+	matrix output;
 
-	matrix* weights_input_h;
-	matrix* weights_hidden_o;
+	double learning_rate;
+	double (*activation_func)(double);
 
-	matrix* bias_hidden;
-	matrix* bias_output;
+	matrix weights_input_h;
+	matrix weights_hidden_o;
+
+	matrix bias_hidden;
+	matrix bias_output;
 
 	net();
+	net(int input, int hidden ,int output);
 	~net();
 
-	void init();
+	void init(int input, int hidden, int output);
 	void feed_forward();
 	void bacpropagate();
 	void calculate_error();
+	
 	void predict();
 	void teach();
 

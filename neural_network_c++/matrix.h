@@ -8,8 +8,11 @@ public:
 
 	double** data;
 
+	matrix();
 	matrix(int, int);
 	~matrix();
+
+	void init(int, int);
 
 	matrix operator+(matrix);
 	matrix operator+(double);
