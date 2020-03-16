@@ -3,6 +3,8 @@
 #include "matrix.h"
 
 
+//moze przerobic wszystkie macierze na wskazniki
+
 
 class net
 {
@@ -17,10 +19,9 @@ public:
 	int output_size;
 	matrix output;
 
-	matrix errors;
-
 	double learning_rate;
 	double (*activation_func)(double);
+	double (*d_func)(double);
 
 	matrix weights_input_h;
 	matrix weights_hidden_o;
@@ -28,9 +29,9 @@ public:
 	matrix bias_hidden;
 	matrix bias_output;
 
-	net();
-	net(int input, int hidden ,int output, double lerning_rate, double (*activation_func)(double));
-	~net();
+	//net();
+	net(int input, int hidden ,int output, double lerning_rate, double (*activation_func)(double),double (*d)(double));
+	//~net();
 
 	//void init(int input, int hidden, int output ,double lerning_rate, double (*activation_func)(double));
 	void feed_forward();

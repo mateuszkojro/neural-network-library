@@ -1,6 +1,10 @@
 #include "net.h"
 
-net::net(int _input, int _hidden, int _output, double _learning_rate, double (*_activation_func)(double)) :input_size(_input), hidden_size(_hidden), output_size(_output), learning_rate(_learning_rate), activation_func(_activation_func) {
+net::net(int _input, int _hidden, int _output, double _learning_rate, double (*_activation_func)(double), double (*d)(double)):input_size(_input), hidden_size(_hidden), output_size(_output), learning_rate(_learning_rate), activation_func(_activation_func) ,d_func(d) {
+
+	input.init(1, _input);
+	hidden.init(1, _hidden);
+	output.init(1, _output);
 
 	weights_input_h.init(hidden_size, input_size);//kolejnosc jest wazna a nie wiem czy ta jest ok
 	weights_hidden_o.init(output_size, hidden_size);
@@ -17,10 +21,11 @@ net::net(int _input, int _hidden, int _output, double _learning_rate, double (*_
 void  net::predict(matrix a) {
 	
 	input = a;
+
 	hidden = weights_input_h * input;
 	hidden = hidden + bias_hidden;
 	hidden.apply_function(activation_func);
-	 
+
 	output = weights_hidden_o * hidden;
 	output = output + bias_output;
 	output.apply_function(activation_func);
@@ -41,7 +46,7 @@ void net::teach(matrix _input ,matrix _train_data) {
 
 	//calculate gradient
 	matrix gradient = output;
-	gradient.apply_function();
+	gradient.apply_function(d_func);
 	gradient = gradient * output_errors;
 	gradient = gradient * learning_rate;
 
@@ -56,7 +61,7 @@ void net::teach(matrix _input ,matrix _train_data) {
 	matrix hidden_errors = who_t * output_errors;
 
 	matrix hidden_gradient = hidden;
-	hidden_gradient.apply_function();
+	hidden_gradient.apply_function(d_func);
 	hidden_gradient = hidden_gradient * hidden_errors;
 	hidden_gradient = hidden_gradient * learning_rate;
 

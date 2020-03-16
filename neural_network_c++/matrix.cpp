@@ -146,7 +146,7 @@ matrix::matrix() :size_x(0), size_y(0),data(nullptr) {};
 
 	matrix::~matrix() {
 		//delete [] data;
-		data = nullptr;
+		//data = nullptr;
 	}
 
 
