@@ -54,6 +54,19 @@ matrix::matrix() :size_x(0), size_y(0),data(nullptr) {};
 		}
 	}
 
+	void matrix::random_fill() {
+#ifdef DEBUG
+		printf("tablice sa inicjalizowane stala wartoscia zamiast losowej w funckcji matrix::random_fill()\n");
+#endif
+		
+		for (int y = 0; y < size_y; y++) {
+			for (int x = 0; x < size_x; x++) {
+				
+				data[y][x] = 0,5;
+			}
+		}
+	}
+	
 	matrix matrix::operator*(matrix b) {
 		matrix c(b.size_x, size_y);
 		for (int y = 0; y < b.size_y; y++) {

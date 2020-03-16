@@ -2,6 +2,7 @@
 #include "matrix.h"
 
 int n = 0;
+#define DEBUG 1
 
 double test(double x) {
     n++;
@@ -50,11 +51,6 @@ int main()
         tab2[2][0] = 3; tab2[2][1] = 2; tab2[2][2] = 1;
 
 
-
-
-    
-
-    std::cout << "Hello World!\n";
     // (rozmiar_w_x,rozmiar_w_y)
     matrix x1(size,size),x2(3,size),x3(3,size);
 

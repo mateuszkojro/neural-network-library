@@ -11,6 +11,9 @@ public:
 	int input_size;
 	matrix input;
 
+	int hidden_size;
+	matrix hidden;
+
 	int output_size;
 	matrix output;
 
@@ -24,10 +27,10 @@ public:
 	matrix bias_output;
 
 	net();
-	net(int input, int hidden ,int output);
+	net(int input, int hidden ,int output, double lerning_rate, double (*activation_func)(double));
 	~net();
 
-	void init(int input, int hidden, int output);
+	//void init(int input, int hidden, int output ,double lerning_rate, double (*activation_func)(double));
 	void feed_forward();
 	void bacpropagate();
 	void calculate_error();
