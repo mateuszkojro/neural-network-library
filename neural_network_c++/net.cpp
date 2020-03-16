@@ -27,9 +27,43 @@ void  net::predict(matrix a) {
 
 }
 
-void net::teach(matrix input ,matrix train_data) {
+void net::teach(matrix _input ,matrix _train_data) {
+	/*
 	
+	JESZCZE RAZ BO KOMPLETNIE NIE JESTEM PEWNY TEGO CZY TO JEST OK 
+	
+	*/
+
+	//calculate values with current weights
 	predict(input);
-	errors = train_data - output;
+
+	matrix output_errors = _train_data - output;
+
+	//calculate gradient
+	matrix gradient = output;
+	gradient.apply_function();
+	gradient = gradient * output_errors;
+	gradient = gradient * learning_rate;
+
+	//calculate delta
+	matrix hidden_t = hidden.transpose();
+	matrix weights_hidden_o_delta = gradient * hidden_t;
+
+	weights_hidden_o = weights_hidden_o + weights_hidden_o_delta;
+	bias_output = bias_output + gradient;
+
+	matrix who_t = weights_hidden_o.transpose();
+	matrix hidden_errors = who_t * output_errors;
+
+	matrix hidden_gradient = hidden;
+	hidden_gradient.apply_function();
+	hidden_gradient = hidden_gradient * hidden_errors;
+	hidden_gradient = hidden_gradient * learning_rate;
+
+	matrix input_t = _input.transpose();
+	matrix weights_input_h_delta = hidden_gradient * input_t;
+	weights_input_h = weights_input_h + weights_hidden_o_delta;
+	bias_hidden = bias_hidden + hidden_gradient;
+
 
 }
