@@ -64,6 +64,11 @@ int main()
     x3 = x1 * x2;
     x3.show();
 
+    printf("\n");
+
+    matrix c = x1.transpose();
+    c.show();
+
 }
 
 //WARRNINGS 

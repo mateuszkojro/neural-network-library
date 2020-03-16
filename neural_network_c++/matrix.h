@@ -26,6 +26,8 @@ public:
 	matrix operator*(matrix);
 	matrix operator*(double);
 
+	matrix transpose();
+
 	void fill_table(double**);
 	void fill(double);
 	void random_fill();

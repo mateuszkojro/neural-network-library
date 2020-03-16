@@ -28,5 +28,8 @@ void  net::predict(matrix a) {
 }
 
 void net::teach(matrix input ,matrix train_data) {
+	
+	predict(input);
+	errors = train_data - output;
 
 }

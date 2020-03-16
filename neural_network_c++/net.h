@@ -17,6 +17,8 @@ public:
 	int output_size;
 	matrix output;
 
+	matrix errors;
+
 	double learning_rate;
 	double (*activation_func)(double);
 

@@ -67,6 +67,20 @@ matrix::matrix() :size_x(0), size_y(0),data(nullptr) {};
 		}
 	}
 	
+	matrix matrix::transpose() {
+		matrix a(size_y, size_x);
+
+		//przetestowac dla macierzy prostokatnej
+
+			for (int y = 0; y < size_y; y++) {
+				for (int x = 0; x < size_x; x++) {
+					a.data[x][y] = data[y][x];
+				}
+			}
+		
+		return a;
+	}
+	
 	matrix matrix::operator*(matrix b) {
 		matrix c(b.size_x, size_y);
 		for (int y = 0; y < b.size_y; y++) {
@@ -134,6 +148,7 @@ matrix::matrix() :size_x(0), size_y(0),data(nullptr) {};
 		//delete [] data;
 		data = nullptr;
 	}
+
 
 
 
