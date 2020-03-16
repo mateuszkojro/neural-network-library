@@ -12,6 +12,21 @@ net::net(int _input, int _hidden, int _output, double _learning_rate, double (*_
 	bias_hidden.random_fill();
 	bias_output.random_fill();
 
+}
+
+void  net::predict(matrix a) {
+	
+	input = a;
+	hidden = weights_input_h * input;
+	hidden = hidden + bias_hidden;
+	hidden.apply_function(activation_func);
+	 
+	output = weights_hidden_o * hidden;
+	output = output + bias_output;
+	output.apply_function(activation_func);
 
 }
 
+void net::teach(matrix input ,matrix train_data) {
+
+}

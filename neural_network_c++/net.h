@@ -35,8 +35,8 @@ public:
 	void bacpropagate();
 	void calculate_error();
 	
-	void predict();
-	void teach();
+	void predict(matrix a);
+	void teach(matrix input , matrix train_data);
 
 	void export_json();
 	void export_binary();
