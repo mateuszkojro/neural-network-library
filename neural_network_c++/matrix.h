@@ -12,6 +12,7 @@ public:
 	double** data;
 
 	matrix();
+	matrix(const matrix& other);
 	matrix(int, int);
 	~matrix();
 

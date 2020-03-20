@@ -147,11 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="array_2d.cpp" />
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="net.cpp" />
     <ClCompile Include="neural_network_c++.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="array_2d.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="net.h" />
   </ItemGroup>

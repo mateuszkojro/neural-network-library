@@ -66,7 +66,7 @@ int main()
 
 
     // (rozmiar_w_x,rozmiar_w_y)
-    matrix x1(1,size),x2(1,size),x3(1,size);
+    matrix x1(size,1),x2(size,1),x3(size,1);
 
     x1.fill_table(tab1);
     x2.fill_table(tab2);
@@ -76,7 +76,9 @@ int main()
     x1.show();
 
     test.predict(x1);
-
+    //
+    test.output.show();
+    //test.teach(x1, x2);
     test.output.show();
   
 

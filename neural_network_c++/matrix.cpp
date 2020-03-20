@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdexcept>
 
 #include "matrix.h"
 
@@ -6,6 +7,11 @@ matrix::matrix() :size_x(0), size_y(0),data(nullptr) {};
 
 	matrix::matrix(int _size_x ,int _size_y):size_x(_size_x),size_y(_size_y) {
 		init(size_x, size_y);
+	}
+
+	matrix::matrix(const matrix& other) : size_x(other.size_x), size_y(other.size_y) {
+		init(size_x, size_y);
+		memcpy(data, &other.data, sizeof(other.data));
 	}
 
 	void matrix::init(int _size_x, int _size_y) {
@@ -105,6 +111,7 @@ matrix::matrix() :size_x(0), size_y(0),data(nullptr) {};
 	}
 
 	matrix matrix::operator+(matrix b) {
+		//if (size_x != b.size_x || size_y != b.size_y)throw std::runtime_error("you cant add matricies of difrent sizes");
 		matrix c(size_x, size_y);
 		for (int y = 0; y < size_y; y++) {
 			for (int x = 0; x < size_x; x++) {

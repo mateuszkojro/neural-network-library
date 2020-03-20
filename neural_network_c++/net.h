@@ -10,6 +10,9 @@ class net
 {
 private:
 public:
+
+	//czy powinienem miec macierze dancyh jako pola klasy?
+
 	int input_size;
 	matrix input;
 
