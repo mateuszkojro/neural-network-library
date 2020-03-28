@@ -175,7 +175,8 @@ matrix::matrix() :size_x(0), size_y(0) {
 
 	matrix matrix::operator-(matrix b) {
 		if (size_x != b.size_y) { 
-			printf("rozmiary macierzy nie sa takie same");__debugbreak(); }
+			printf("rozmiary macierzy nie sa takie same");
+			__debugbreak(); }
 		matrix c(size_x, size_y);
 		for (int y = 0; y < size_y; y++) {
 			for (int x = 0; x < size_x; x++) {

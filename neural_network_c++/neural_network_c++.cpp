@@ -6,11 +6,6 @@
 int n = 0;
 #define DEBUG 1
 
-double test(double x) {
-    n++;
-    return n;
-}
-
 double act(double x) {
     return tanh(x);
 }
@@ -62,7 +57,7 @@ int main()
         
         */
 
-
+        auto test_f = [](double x) {return x++; };
 
 
     // (rozmiar_w_x,rozmiar_w_y)
@@ -76,9 +71,9 @@ int main()
     x1.show();
 
     test.predict(x1);
-    //
+    
     test.output.show();
-    //test.teach(x1, x2);
+    test.teach(x1, x2);
     test.output.show();
   
 

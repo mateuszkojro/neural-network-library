@@ -6,7 +6,7 @@ net::net(int _input, int _hidden, int _output, double _learning_rate, double (*_
 	hidden.init(1, _hidden);
 	output.init(1, _output);
 
-	weights_input_h.init(hidden_size, input_size);//kolejnosc jest wazna a nie wiem czy ta jest ok
+	weights_input_h.init(hidden_size, input_size);  //kolejnosc jest wazna a nie wiem czy ta jest ok
 	weights_hidden_o.init(output_size, hidden_size);
 	weights_input_h.random_fill();
 	weights_hidden_o.random_fill();
@@ -43,7 +43,6 @@ void net::teach(matrix _input ,matrix _train_data) {
 	predict(input);
 
 	matrix output_errors = _train_data - output;
-
 	//calculate gradient
 	matrix gradient = output;
 	gradient.apply_function(d_func);
