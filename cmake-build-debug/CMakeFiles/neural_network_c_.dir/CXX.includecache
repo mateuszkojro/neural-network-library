@@ -6,7 +6,21 @@
 
 #IncludeRegexTransform: 
 
-/home/mateusz/workspace/neural_network_c-/matrix.cpp
+../include/array_2d.h
+
+../include/matrix.h
+vector
+-
+
+../include/net.h
+matrix.h
+../include/matrix.h
+
+/home/mateusz/workspace/neural_network_c-/src/array_2d.cpp
+array_2d.h
+/home/mateusz/workspace/neural_network_c-/src/array_2d.h
+
+/home/mateusz/workspace/neural_network_c-/src/matrix.cpp
 stdio.h
 -
 stdlib.h
@@ -14,9 +28,19 @@ stdlib.h
 stdexcept
 -
 matrix.h
-/home/mateusz/workspace/neural_network_c-/matrix.h
+/home/mateusz/workspace/neural_network_c-/src/matrix.h
 
-/home/mateusz/workspace/neural_network_c-/matrix.h
-vector
+/home/mateusz/workspace/neural_network_c-/src/net.cpp
+net.h
+/home/mateusz/workspace/neural_network_c-/src/net.h
+
+/home/mateusz/workspace/neural_network_c-/src/neural_network_c++.cpp
+iostream
 -
+cmath
+-
+matrix.h
+/home/mateusz/workspace/neural_network_c-/src/matrix.h
+net.h
+/home/mateusz/workspace/neural_network_c-/src/net.h
 

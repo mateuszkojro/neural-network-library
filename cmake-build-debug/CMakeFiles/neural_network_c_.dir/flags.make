@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/mateusz/workspace/neural_network_c-/. 
+CXX_INCLUDES = -I/home/mateusz/workspace/neural_network_c-/include 
 

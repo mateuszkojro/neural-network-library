@@ -123,113 +123,113 @@ neural_network_c_/fast:
 	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/build
 .PHONY : neural_network_c_/fast
 
-array_2d.o: array_2d.cpp.o
+src/array_2d.o: src/array_2d.cpp.o
 
-.PHONY : array_2d.o
-
-# target to build an object file
-array_2d.cpp.o:
-	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/array_2d.cpp.o
-.PHONY : array_2d.cpp.o
-
-array_2d.i: array_2d.cpp.i
-
-.PHONY : array_2d.i
-
-# target to preprocess a source file
-array_2d.cpp.i:
-	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/array_2d.cpp.i
-.PHONY : array_2d.cpp.i
-
-array_2d.s: array_2d.cpp.s
-
-.PHONY : array_2d.s
-
-# target to generate assembly for a file
-array_2d.cpp.s:
-	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/array_2d.cpp.s
-.PHONY : array_2d.cpp.s
-
-matrix.o: matrix.cpp.o
-
-.PHONY : matrix.o
+.PHONY : src/array_2d.o
 
 # target to build an object file
-matrix.cpp.o:
-	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/matrix.cpp.o
-.PHONY : matrix.cpp.o
+src/array_2d.cpp.o:
+	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/src/array_2d.cpp.o
+.PHONY : src/array_2d.cpp.o
 
-matrix.i: matrix.cpp.i
+src/array_2d.i: src/array_2d.cpp.i
 
-.PHONY : matrix.i
+.PHONY : src/array_2d.i
 
 # target to preprocess a source file
-matrix.cpp.i:
-	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/matrix.cpp.i
-.PHONY : matrix.cpp.i
+src/array_2d.cpp.i:
+	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/src/array_2d.cpp.i
+.PHONY : src/array_2d.cpp.i
 
-matrix.s: matrix.cpp.s
+src/array_2d.s: src/array_2d.cpp.s
 
-.PHONY : matrix.s
+.PHONY : src/array_2d.s
 
 # target to generate assembly for a file
-matrix.cpp.s:
-	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/matrix.cpp.s
-.PHONY : matrix.cpp.s
+src/array_2d.cpp.s:
+	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/src/array_2d.cpp.s
+.PHONY : src/array_2d.cpp.s
 
-net.o: net.cpp.o
+src/matrix.o: src/matrix.cpp.o
 
-.PHONY : net.o
+.PHONY : src/matrix.o
 
 # target to build an object file
-net.cpp.o:
-	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/net.cpp.o
-.PHONY : net.cpp.o
+src/matrix.cpp.o:
+	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/src/matrix.cpp.o
+.PHONY : src/matrix.cpp.o
 
-net.i: net.cpp.i
+src/matrix.i: src/matrix.cpp.i
 
-.PHONY : net.i
+.PHONY : src/matrix.i
 
 # target to preprocess a source file
-net.cpp.i:
-	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/net.cpp.i
-.PHONY : net.cpp.i
+src/matrix.cpp.i:
+	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/src/matrix.cpp.i
+.PHONY : src/matrix.cpp.i
 
-net.s: net.cpp.s
+src/matrix.s: src/matrix.cpp.s
 
-.PHONY : net.s
+.PHONY : src/matrix.s
 
 # target to generate assembly for a file
-net.cpp.s:
-	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/net.cpp.s
-.PHONY : net.cpp.s
+src/matrix.cpp.s:
+	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/src/matrix.cpp.s
+.PHONY : src/matrix.cpp.s
 
-neural_network_c++.o: neural_network_c++.cpp.o
+src/net.o: src/net.cpp.o
 
-.PHONY : neural_network_c++.o
+.PHONY : src/net.o
 
 # target to build an object file
-neural_network_c++.cpp.o:
-	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/neural_network_c++.cpp.o
-.PHONY : neural_network_c++.cpp.o
+src/net.cpp.o:
+	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/src/net.cpp.o
+.PHONY : src/net.cpp.o
 
-neural_network_c++.i: neural_network_c++.cpp.i
+src/net.i: src/net.cpp.i
 
-.PHONY : neural_network_c++.i
+.PHONY : src/net.i
 
 # target to preprocess a source file
-neural_network_c++.cpp.i:
-	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/neural_network_c++.cpp.i
-.PHONY : neural_network_c++.cpp.i
+src/net.cpp.i:
+	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/src/net.cpp.i
+.PHONY : src/net.cpp.i
 
-neural_network_c++.s: neural_network_c++.cpp.s
+src/net.s: src/net.cpp.s
 
-.PHONY : neural_network_c++.s
+.PHONY : src/net.s
 
 # target to generate assembly for a file
-neural_network_c++.cpp.s:
-	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/neural_network_c++.cpp.s
-.PHONY : neural_network_c++.cpp.s
+src/net.cpp.s:
+	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/src/net.cpp.s
+.PHONY : src/net.cpp.s
+
+src/neural_network_c++.o: src/neural_network_c++.cpp.o
+
+.PHONY : src/neural_network_c++.o
+
+# target to build an object file
+src/neural_network_c++.cpp.o:
+	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/src/neural_network_c++.cpp.o
+.PHONY : src/neural_network_c++.cpp.o
+
+src/neural_network_c++.i: src/neural_network_c++.cpp.i
+
+.PHONY : src/neural_network_c++.i
+
+# target to preprocess a source file
+src/neural_network_c++.cpp.i:
+	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/src/neural_network_c++.cpp.i
+.PHONY : src/neural_network_c++.cpp.i
+
+src/neural_network_c++.s: src/neural_network_c++.cpp.s
+
+.PHONY : src/neural_network_c++.s
+
+# target to generate assembly for a file
+src/neural_network_c++.cpp.s:
+	$(MAKE) -f CMakeFiles/neural_network_c_.dir/build.make CMakeFiles/neural_network_c_.dir/src/neural_network_c++.cpp.s
+.PHONY : src/neural_network_c++.cpp.s
 
 # Help Target
 help:
@@ -240,18 +240,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... neural_network_c_"
-	@echo "... array_2d.o"
-	@echo "... array_2d.i"
-	@echo "... array_2d.s"
-	@echo "... matrix.o"
-	@echo "... matrix.i"
-	@echo "... matrix.s"
-	@echo "... net.o"
-	@echo "... net.i"
-	@echo "... net.s"
-	@echo "... neural_network_c++.o"
-	@echo "... neural_network_c++.i"
-	@echo "... neural_network_c++.s"
+	@echo "... src/array_2d.o"
+	@echo "... src/array_2d.i"
+	@echo "... src/array_2d.s"
+	@echo "... src/matrix.o"
+	@echo "... src/matrix.i"
+	@echo "... src/matrix.s"
+	@echo "... src/net.o"
+	@echo "... src/net.i"
+	@echo "... src/net.s"
+	@echo "... src/neural_network_c++.o"
+	@echo "... src/neural_network_c++.i"
+	@echo "... src/neural_network_c++.s"
 .PHONY : help
 
 

@@ -3,13 +3,10 @@ project(neural_network_c_)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(.)
+include_directories(include)
 
 add_executable(neural_network_c_
-        array_2d.cpp
-        array_2d.h
-        matrix.cpp
-        matrix.h
-        net.cpp
-        net.h
-        neural_network_c++.cpp)
+        src/array_2d.cpp
+        src/matrix.cpp
+        src/net.cpp
+        src/neural_network_c++.cpp)

@@ -24,8 +24,6 @@ matrix::matrix() :size_x(0), size_y(0) {
 	void matrix::init(int _size_x, int _size_y) {
 
 		//reserve enough memory
-
-
 		size_x = _size_x;
 		size_y = _size_y; 
 

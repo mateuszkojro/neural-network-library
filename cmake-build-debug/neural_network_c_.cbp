@@ -44,7 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/mateusz/workspace/neural_network_c-/."/>
+					<Add directory="/home/mateusz/workspace/neural_network_c-/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/x86_64-pc-linux-gnu"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/backward"/>
@@ -67,7 +67,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/mateusz/workspace/neural_network_c-/."/>
+					<Add directory="/home/mateusz/workspace/neural_network_c-/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/x86_64-pc-linux-gnu"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/backward"/>
@@ -84,25 +84,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/mateusz/workspace/neural_network_c-/array_2d.cpp">
+		<Unit filename="/home/mateusz/workspace/neural_network_c-/src/array_2d.cpp">
 			<Option target="neural_network_c_"/>
 		</Unit>
-		<Unit filename="/home/mateusz/workspace/neural_network_c-/array_2d.h">
+		<Unit filename="/home/mateusz/workspace/neural_network_c-/src/matrix.cpp">
 			<Option target="neural_network_c_"/>
 		</Unit>
-		<Unit filename="/home/mateusz/workspace/neural_network_c-/matrix.cpp">
+		<Unit filename="/home/mateusz/workspace/neural_network_c-/src/net.cpp">
 			<Option target="neural_network_c_"/>
 		</Unit>
-		<Unit filename="/home/mateusz/workspace/neural_network_c-/matrix.h">
-			<Option target="neural_network_c_"/>
-		</Unit>
-		<Unit filename="/home/mateusz/workspace/neural_network_c-/net.cpp">
-			<Option target="neural_network_c_"/>
-		</Unit>
-		<Unit filename="/home/mateusz/workspace/neural_network_c-/net.h">
-			<Option target="neural_network_c_"/>
-		</Unit>
-		<Unit filename="/home/mateusz/workspace/neural_network_c-/neural_network_c++.cpp">
+		<Unit filename="/home/mateusz/workspace/neural_network_c-/src/neural_network_c++.cpp">
 			<Option target="neural_network_c_"/>
 		</Unit>
 		<Unit filename="/home/mateusz/workspace/neural_network_c-/CMakeLists.txt">
