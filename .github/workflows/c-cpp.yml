@@ -16,6 +16,6 @@ jobs:
     - name: cd cmake-build-debug && update cmake
       run: cmake
     - name: make
-      run: cmake-build-debug && make
+      run: cd cmake-build-debug && make
     - name: run
       run: ./cmake-build-debug/neural_network_c_
