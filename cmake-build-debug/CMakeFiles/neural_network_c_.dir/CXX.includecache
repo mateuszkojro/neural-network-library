@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mateusz/workspace/neural_network_c-/matrix.cpp
+stdio.h
+-
+stdlib.h
+-
+stdexcept
+-
+matrix.h
+/home/mateusz/workspace/neural_network_c-/matrix.h
+
+/home/mateusz/workspace/neural_network_c-/matrix.h
+vector
+-
+

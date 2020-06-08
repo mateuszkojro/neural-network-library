@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdexcept>
-
-#include < intrin.h > //inline breakpoints
-
 #include "matrix.h"
 
 matrix::matrix() :size_x(0), size_y(0) {
@@ -129,7 +126,7 @@ matrix::matrix() :size_x(0), size_y(0) {
 	}
 	
 	matrix matrix::operator*(matrix b) {
-		if (size_x != b.size_y) { printf("ilosc kolumn pierwszej macierzy {%d} nie jest rowna ilosci wierszy drugiej {%d} ",size_x,b.size_y); __debugbreak(); }
+		if (size_x != b.size_y) { throw std::invalid_argument("ilosc kolumn pierwszej macierzy nie jest rowna ilosci wierszy drugiej "); }
 		matrix c(b.size_x, size_y);
 		for (int y = 0; y < b.size_y; y++) {
 			for (int x = 0; x < b.size_x; x++) {
@@ -153,7 +150,7 @@ matrix::matrix() :size_x(0), size_y(0) {
 	}
 
 	matrix matrix::operator+(matrix b) {
-		if (size_x != b.size_y) { printf("rozmiary macierzy nie sa takie same"); __debugbreak(); }
+		if (size_x != b.size_y) { throw std::invalid_argument("rozmiary macierzy nie sa takie same"); }
 		matrix c(size_x, size_y);
 		for (int y = 0; y < size_y; y++) {
 			for (int x = 0; x < size_x; x++) {
@@ -174,8 +171,7 @@ matrix::matrix() :size_x(0), size_y(0) {
 	}
 
 	matrix matrix::operator-(matrix b) {
-		if (size_x != b.size_y) { 
-			printf("rozmiary macierzy nie sa takie same");__debugbreak(); }
+		if (size_x != b.size_y) {throw std::invalid_argument("rozmiary macierzy nie sa takie same"); }
 		matrix c(size_x, size_y);
 		for (int y = 0; y < size_y; y++) {
 			for (int x = 0; x < size_x; x++) {

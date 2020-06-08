@@ -1,0 +1,3 @@
+/home/mateusz/workspace/neural_network_c-/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/mateusz/workspace/neural_network_c-/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/mateusz/workspace/neural_network_c-/cmake-build-debug/CMakeFiles/neural_network_c_.dir
