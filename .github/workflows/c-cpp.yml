@@ -13,11 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: change dir
-      working-directory: cmake-build-debug
-    - name: update cmake
+    - name: cd cmake-build-debug && update cmake
       run: cmake
     - name: make
-      run: make
+      run: cmake-build-debug && make
     - name: run
-      run: ./neural_network_c_
+      run: ./cmake-build-debug/neural_network_c_
