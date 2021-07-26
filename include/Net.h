@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Matrix.h"
-#include "matrix.h"
 
 // moze przerobic wszystkie macierze na wskazniki
 
@@ -31,7 +30,7 @@ public:
   void bacpropagate();
   void calculate_error();
 
-  void Predict(const Matrix& a);
+  Matrix Predict(const Matrix& a);
   void Teach(const Matrix &input, const Matrix &train_data);
 
 

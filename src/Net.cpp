@@ -11,8 +11,8 @@ Net::Net(int input, int hidden, int output, double learning_rate,
   output_ = Matrix(1, output);
 
   weights_input_h_ =
-      Matrix(hidden, input); // kolejnosc jest wazna a nie wiem czy ta jest ok
-  weights_hidden_o_ = Matrix(output, hidden);
+      Matrix(input, hidden); // kolejnosc jest wazna a nie wiem czy ta jest ok
+  weights_hidden_o_ = Matrix(hidden, output);
   weights_input_h_.RandomFill();
   weights_hidden_o_.RandomFill();
 
@@ -22,17 +22,19 @@ Net::Net(int input, int hidden, int output, double learning_rate,
   bias_output_.RandomFill();
 }
 
-void Net::Predict(const Matrix &a) {
+Matrix Net::Predict(const Matrix &a) {
 
   input_ = a;
 
-  hidden_ = weights_input_h_ * input_;
+  hidden_ = input_ * weights_input_h_;
   hidden_ = hidden_ + bias_hidden_;
   hidden_.ApplyFunction(activation_func_);
 
-  output_ = weights_hidden_o_ * hidden_;
+  output_ = hidden_ * weights_hidden_o_;
   output_ = output_ + bias_output_;
   output_.ApplyFunction(activation_func_);
+
+  return output_;
 }
 
 void Net::Teach(const Matrix &input, const Matrix &train_data) {

@@ -53,7 +53,7 @@ Matrix::Matrix(const Matrix &other) {
   }
   this->size_x_ = other.size_x_;
   this->size_y_ = other.size_y_;
-  arr_ = new double[size_x_ * size_y_];
+  arr_ = new double[Size()];
   memcpy(arr_, other.arr_, sizeof(double) * size_x_ * size_y_);
 }
 
@@ -162,6 +162,8 @@ Matrix &Matrix::operator=(const Matrix &other) {
   }
   size_x_ = other.size_x_;
   size_y_ = other.size_y_;
+
+  this->arr_ = new double [Size()];
   // memcpy - funkcja W standardzie C sluzaca do kopiowania bloku pamieci
   //(jej implementacja ma zlozonosc znaczaco lepsza niz O(n) jaka osiagneli
   // bysmy kopiujac element po elemencie)
