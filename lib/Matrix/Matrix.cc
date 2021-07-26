@@ -277,3 +277,11 @@ Matrix Matrix::Transpose() const {
 
   return result;
 }
+void Matrix::RandomFill() {
+  std::default_random_engine generator;
+  std::uniform_real_distribution<double> distribution(0.0, 1.0);
+
+  for (int i = 0; i < Size(); ++i) {
+    this->operator()(i) = distribution(generator);
+  }
+}

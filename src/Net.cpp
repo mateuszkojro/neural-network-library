@@ -13,13 +13,13 @@ Net::Net(int input, int hidden, int output, double learning_rate,
       hidden,
       input); // kolejnosc jest wazna a nie wiem czy ta jest ok
   weights_hidden_o_.init(output, hidden);
-  weights_input_h_.random_fill();
-  weights_hidden_o_.random_fill();
+  weights_input_h_.RandomFill();
+  weights_hidden_o_.RandomFill();
 
   bias_hidden_.init(hidden, 1);
   bias_output_.init(output, 1);
-  bias_hidden_.random_fill();
-  bias_output_.random_fill();
+  bias_hidden_.RandomFill();
+  bias_output_.RandomFill();
 }
 
 void Net::Predict(const Matrix &a) {

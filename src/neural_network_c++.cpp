@@ -1,5 +1,4 @@
 #include "Net.h"
-#include "matrix.h"
 #include <cmath>
 
 int n = 0;

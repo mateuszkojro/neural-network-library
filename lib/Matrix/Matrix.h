@@ -7,6 +7,8 @@
 #include <initializer_list>
 #include <iostream>
 #include <stdexcept>
+#include <random>
+#include <cfloat>
 
 /*
         Autor: Mateusz Kojro
@@ -55,6 +57,8 @@ public:
   double &operator()(unsigned n);
 
   Matrix Transpose() const;
+
+  void RandomFill();
 
 private:
   unsigned Size() const;
