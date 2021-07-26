@@ -62,7 +62,7 @@ StyleCopReport.xml
 # Files built by Visual Studio
 *_i.c
 *_p.c
-*_h.h
+*_h.H
 *.ilk
 *.meta
 *.obj
@@ -151,7 +151,7 @@ AutoTest.Net/
 # Web workbench (sass)
 .sass-cache/
 
-# Installshield output folder
+# Installshield output_ folder
 [Ee]xpress/
 
 # DocProject is a documentation generator add-in
@@ -276,7 +276,7 @@ node_modules/
 # Visual Studio 6 auto-generated workspace file (contains which files were open etc.)
 *.vbw
 
-# Visual Studio LightSwitch build output
+# Visual Studio LightSwitch build output_
 **/*.HTMLClient/GeneratedArtifacts
 **/*.DesktopClient/GeneratedArtifacts
 **/*.DesktopClient/ModelManifest.xml
@@ -312,7 +312,7 @@ __pycache__/
 # Telerik's JustMock configuration file
 *.jmconfig
 
-# BizTalk build output
+# BizTalk build output_
 *.btp.cs
 *.btm.cs
 *.odx.cs
@@ -321,7 +321,7 @@ __pycache__/
 # OpenCover UI analysis results
 OpenCover/
 
-# Azure Stream Analytics local run output
+# Azure Stream Analytics local run output_
 ASALocalRun/
 
 # MSBuild Binary and Structured Log
@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+cmake-build-debug/
+/cmake-build-debug/
