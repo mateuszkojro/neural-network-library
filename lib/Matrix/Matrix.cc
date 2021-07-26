@@ -210,10 +210,14 @@ Matrix Matrix::operator+(const Matrix &other) {
 }
 
 Matrix Matrix::operator-(const Matrix &other) const {
+
 #ifdef CHECK_DIMENTIONS
-  if (this->size_x_ != other.size_y_) {
+  if (this->size_x_ != other.size_x_) {
     throw wrong_size_exception_;
-  }    // throw custom exception if wrong sizes
+  }
+  if (this->size_y_ != other.size_y_) {
+    throw wrong_size_exception_;
+  }// throw custom exception if wrong sizes
 #endif // CHECK_DIMENTIONS
   Matrix result(size_x_, size_y_);
   for (unsigned i = 0; i < size_x_ * size_y_; i++) {
