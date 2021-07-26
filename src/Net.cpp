@@ -53,13 +53,13 @@ void Net::Teach(const Matrix &input, const Matrix &train_data) {
   gradient = gradient * learning_rate_;
 
   // calculate delta
-  Matrix hidden_t = hidden_.transpose();
+  Matrix hidden_t = hidden_.Transpose();
   Matrix weights_hidden_o_delta = gradient * hidden_t;
 
   weights_hidden_o_ = weights_hidden_o_ + weights_hidden_o_delta;
   bias_output_ = bias_output_ + gradient;
 
-  Matrix who_t = weights_hidden_o_.transpose();
+  Matrix who_t = weights_hidden_o_.Transpose();
   Matrix hidden_errors = who_t * output_errors;
 
   Matrix hidden_gradient = hidden_;
@@ -67,7 +67,7 @@ void Net::Teach(const Matrix &input, const Matrix &train_data) {
   hidden_gradient = hidden_gradient * hidden_errors;
   hidden_gradient = hidden_gradient * learning_rate_;
 
-  Matrix input_t = input.transpose();
+  Matrix input_t = input.Transpose();
   Matrix weights_input_h_delta = hidden_gradient * input_t;
   weights_input_h_ = weights_input_h_ + weights_hidden_o_delta;
   bias_hidden_ = bias_hidden_ + hidden_gradient;

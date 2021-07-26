@@ -54,7 +54,7 @@ public:
   double &operator()(unsigned x, unsigned y);
   double &operator()(unsigned n);
 
-  Matrix transpose();
+  Matrix Transpose() const;
 
 private:
   unsigned Size() const;
