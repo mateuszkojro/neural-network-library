@@ -54,6 +54,8 @@ public:
   double &operator()(unsigned x, unsigned y);
   double &operator()(unsigned n);
 
+  Matrix transpose();
+
 private:
   unsigned Size() const;
   // wskaznik na tablice przechowujaca wartosci macierzy

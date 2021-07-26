@@ -266,3 +266,14 @@ double &Matrix::operator()(unsigned int n) {
 #endif // CHECK_BOUNDS
   return arr_[n];
 }
+
+// TODO: this will be very slow if many operations are made on the transposed matrix
+//  but takes almost no time to do so needs to be analyzed more carefully
+Matrix Matrix::transpose() {
+  Matrix result = *this;
+
+  result.size_x_ = this->size_y_;
+  result.size_y_ = this->size_x_;
+
+  return result;
+}
