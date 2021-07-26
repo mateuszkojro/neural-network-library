@@ -12,6 +12,6 @@ add_executable(
         neural_network_c_
         src/Net.cpp
         src/neural_network_c++.cpp
-        )
+)
 
-target_link_libraries(Matrix)
+target_link_libraries(neural_network_c_ Matrix)
