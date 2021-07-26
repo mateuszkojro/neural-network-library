@@ -207,7 +207,7 @@ Matrix Matrix::operator+(const Matrix &other) {
   return result;
 }
 
-Matrix Matrix::operator-(const Matrix &other) {
+Matrix Matrix::operator-(const Matrix &other) const {
 #ifdef CHECK_DIMENTIONS
   if (this->size_x_ != other.size_y_) {
     throw wrong_size_exception_;

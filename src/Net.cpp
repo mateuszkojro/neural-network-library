@@ -2,22 +2,22 @@
 #include "Matrix.h"
 
 Net::Net(int input, int hidden, int output, double learning_rate,
-         double (*activation_func)(double))
-    : learning_rate_(learning_rate), activation_func_(activation_func) {
+         double (*activation_func)(double), double (*derivative)(double))
+    : learning_rate_(learning_rate), activation_func_(activation_func),
+      derivative_(derivative) {
 
-  input_.init(1, input);
-  hidden_.init(1, hidden);
-  output_.init(1, output);
+  input_ = Matrix(1, input);
+  hidden_ = Matrix(1, hidden);
+  output_ = Matrix(1, output);
 
-  weights_input_h_.init(
-      hidden,
-      input); // kolejnosc jest wazna a nie wiem czy ta jest ok
-  weights_hidden_o_.init(output, hidden);
+  weights_input_h_ =
+      Matrix(hidden, input); // kolejnosc jest wazna a nie wiem czy ta jest ok
+  weights_hidden_o_ = Matrix(output, hidden);
   weights_input_h_.RandomFill();
   weights_hidden_o_.RandomFill();
 
-  bias_hidden_.init(hidden, 1);
-  bias_output_.init(output, 1);
+  bias_hidden_ = Matrix(hidden, 1);
+  bias_output_ = Matrix(output, 1);
   bias_hidden_.RandomFill();
   bias_output_.RandomFill();
 }
@@ -48,7 +48,7 @@ void Net::Teach(const Matrix &input, const Matrix &train_data) {
   Matrix output_errors = train_data - output_;
   // calculate gradient
   Matrix gradient = output_;
-  gradient.ApplyFunction(d_func);
+  gradient.ApplyFunction(derivative_);
   gradient = gradient * output_errors;
   gradient = gradient * learning_rate_;
 
@@ -63,7 +63,7 @@ void Net::Teach(const Matrix &input, const Matrix &train_data) {
   Matrix hidden_errors = who_t * output_errors;
 
   Matrix hidden_gradient = hidden_;
-  hidden_gradient.ApplyFunction(d_func);
+  hidden_gradient.ApplyFunction(derivative_);
   hidden_gradient = hidden_gradient * hidden_errors;
   hidden_gradient = hidden_gradient * learning_rate_;
 

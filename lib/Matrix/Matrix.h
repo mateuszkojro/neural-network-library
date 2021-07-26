@@ -50,7 +50,7 @@ public:
   Matrix operator*(const Matrix &other);
   Matrix operator*(double scalar);
   Matrix operator+(const Matrix &other);
-  Matrix operator-(const Matrix &other);
+  Matrix operator-(const Matrix &other) const;
   bool operator==(const Matrix &other);
   bool operator!=(const Matrix &other);
   double &operator()(unsigned x, unsigned y);

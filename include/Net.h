@@ -9,7 +9,7 @@ class Net {
 private:
 public:
   Net(int input, int hidden, int output, double learning_rate,
-      double (*activation_func)(double));
+      double (*activation_func)(double), double (*derivative)(double ));
   Matrix input_;
 
   Matrix hidden_;
@@ -18,12 +18,14 @@ public:
 
   double learning_rate_;
   double (*activation_func_)(double);
+  double (*derivative_)(double);
 
   Matrix weights_input_h_;
   Matrix weights_hidden_o_;
 
   Matrix bias_hidden_;
   Matrix bias_output_;
+
 
   void feed_forward();
   void bacpropagate();
