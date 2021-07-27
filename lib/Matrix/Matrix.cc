@@ -76,7 +76,7 @@ void Matrix::Set(unsigned x, unsigned y, double value) {
   arr_[CalcAdress(x, y)] = value;
 }
 
-double Matrix::At(unsigned x, unsigned y) {
+double Matrix::At(unsigned x, unsigned y) const {
 // Jako ze sprawdzanie czy adres nie wychodzi poza zakresy tabel zuzywa duzo
 // zasobow (akumulje sie wiele wywolan tej funckji po 2 porownaniach W kazdym)
 // ustawiamy je jako dodatkowa func domyslnie wylaczana
@@ -87,7 +87,7 @@ double Matrix::At(unsigned x, unsigned y) {
   return arr_[CalcAdress(x, y)];
 }
 
-void Matrix::Print() {
+void Matrix::Print() const {
   for (unsigned y = 0; y < size_y_; y++) {
     for (unsigned x = 0; x < size_x_; x++) {
       std::clog << this->At(x, y) << " ";
@@ -292,3 +292,5 @@ void Matrix::RandomFill() {
     this->operator()(i) = distribution(generator);
   }
 }
+unsigned Matrix::Cols() const { return Width(); }
+unsigned Matrix::Rows() const { return Height(); }

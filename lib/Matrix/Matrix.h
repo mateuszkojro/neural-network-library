@@ -28,20 +28,22 @@ public:
   Matrix(unsigned size_x, unsigned size_y);
   ~Matrix();
 
-  double At(unsigned x, unsigned y);
+  double At(unsigned x, unsigned y) const;
 
   void Set(unsigned x, unsigned y, double value);
-  void Print();
+  void Print() const;
   bool FastCompare(const Matrix &other);
   void ApplyFunction(double (*func)(double));
 
   unsigned SizeX() const;
   unsigned Width() const;
   unsigned W() const;
+  unsigned Cols() const;
 
   unsigned SizeY() const;
   unsigned Height() const;
   unsigned H() const;
+  unsigned Rows() const;
 
   // Uzywam "const Matrix&" W celu unikniecia niepotrzebnych kopii
   Matrix &operator=(const Matrix &other);
