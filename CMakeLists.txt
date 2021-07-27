@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.16)
 project(neural_network_c_)
 
+enable_testing()
+
+
 set(CMAKE_CXX_STANDARD 14)
 
 add_library(Matrix lib/Matrix/Matrix.h lib/Matrix/Matrix.cc)
@@ -23,3 +26,4 @@ target_link_libraries(tests PRIVATE
         Matrix
         Catch2::Catch2
         )
+add_test(NAME Catch2 COMMAND ./tests)
