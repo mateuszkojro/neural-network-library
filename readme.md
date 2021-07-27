@@ -19,6 +19,6 @@ and to test it:
 
 ```bash
 cd build
-./test
+./tests
 ```
 
