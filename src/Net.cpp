@@ -1,6 +1,13 @@
 #include "Net.h"
 #include "Matrix.h"
 
+/// Create NN
+/// \param input Number of input nodes
+/// \param hidden Number of hidden nodes
+/// \param output Number of output nodes
+/// \param learning_rate Learning rate
+/// \param activation_func Activation function
+/// \param derivative Derivative of activation function
 Net::Net(int input, int hidden, int output, double learning_rate,
          double (*activation_func)(double), double (*derivative)(double))
     : learning_rate_(learning_rate), activation_func_(activation_func),
@@ -22,9 +29,12 @@ Net::Net(int input, int hidden, int output, double learning_rate,
   bias_output_.RandomFill();
 }
 
+/// Make one feed-forward pass on defined Neural Network
+/// \param a Input for NN
+/// \return  Output of Feed forward
 Matrix Net::Predict(const Matrix &a) const {
 
-  const Matrix& input = a;
+  const Matrix &input = a;
 
   Matrix hidden = input * weights_input_h_;
   hidden = hidden + bias_hidden_;
@@ -37,21 +47,19 @@ Matrix Net::Predict(const Matrix &a) const {
   return output;
 }
 
+/// Make one pass over whole NN (feed forward and backpropagation)
+/// \param input Input data
+/// \param labels Expected output for input data
 void Net::Teach(const Matrix &input, const Matrix &labels) {
-  /*
-
-  JESZCZE RAZ BO KOMPLETNIE NIE JESTEM PEWNY TEGO CZY TO JEST OK
-
-  */
 
   //   calculate values with current weights
   //  Matrix prediction = Predict(input);
 
-  Matrix hidden = weights_input_h_ * input;
+  Matrix hidden = input * weights_input_h_;
   hidden = hidden + bias_hidden_;
   hidden.ApplyFunction(activation_func_);
 
-  Matrix output = weights_hidden_o_ * hidden;
+  Matrix output = hidden * weights_hidden_o_;
   output = output + bias_output_;
   output.ApplyFunction(activation_func_);
 
