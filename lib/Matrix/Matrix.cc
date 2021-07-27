@@ -277,12 +277,17 @@ double &Matrix::operator()(unsigned int n) {
 // matrix
 //  but takes almost no time to do so needs to be analyzed more carefully
 Matrix Matrix::Transpose() const {
-  Matrix result = *this;
+  Matrix transpose = *this;
 
-  result.size_x_ = this->size_y_;
-  result.size_y_ = this->size_x_;
+  transpose.size_x_ = this->size_y_;
+  transpose.size_y_ = this->size_x_;
 
-  return result;
+  for (int i = 0; i < Rows(); ++i)
+    for (int j = 0; j < Cols(); ++j) {
+      transpose(j, i) = this->At(i, j);
+    }
+
+  return transpose;
 }
 void Matrix::RandomFill() {
   std::default_random_engine generator;
