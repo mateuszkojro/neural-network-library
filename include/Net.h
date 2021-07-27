@@ -30,8 +30,8 @@ public:
   void bacpropagate();
   void calculate_error();
 
-  Matrix Predict(const Matrix& a);
-  void Teach(const Matrix &input, const Matrix &train_data);
+  Matrix Predict(const Matrix& a) const;
+  void Teach(const Matrix &input, const Matrix &labels);
 
 
   void export_json();
