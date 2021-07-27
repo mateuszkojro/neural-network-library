@@ -2,13 +2,13 @@
 #define MACIERZ_H
 
 #include <algorithm>
+#include <cfloat>
 #include <cstring>
 #include <exception>
 #include <initializer_list>
 #include <iostream>
-#include <stdexcept>
 #include <random>
-#include <cfloat>
+#include <stdexcept>
 
 /*
         Autor: Mateusz Kojro
@@ -43,16 +43,14 @@ public:
   unsigned Height() const;
   unsigned H() const;
 
-
-
   // Uzywam "const Matrix&" W celu unikniecia niepotrzebnych kopii
   Matrix &operator=(const Matrix &other);
-  Matrix operator*(const Matrix &other);
-  Matrix operator*(double scalar);
-  Matrix operator+(const Matrix &other);
+  Matrix operator*(const Matrix &other) const;
+  Matrix operator*(double scalar) const;
+  Matrix operator+(const Matrix &other) const;
   Matrix operator-(const Matrix &other) const;
-  bool operator==(const Matrix &other);
-  bool operator!=(const Matrix &other);
+  bool operator==(const Matrix &other) const;
+  bool operator!=(const Matrix &other) const;
   double &operator()(unsigned x, unsigned y);
   double &operator()(unsigned n);
 

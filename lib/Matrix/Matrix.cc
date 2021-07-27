@@ -108,7 +108,7 @@ bool Matrix::FastCompare(const Matrix &other) {
                        sizeof(double) * size_x_ * size_y_);
 }
 
-bool Matrix::operator==(const Matrix &other) {
+bool Matrix::operator==(const Matrix &other) const {
 
   // jezeli maja ten sam adres tzn ze sa tym samym obiektem - moge zwrocic
   // wczesniej
@@ -135,7 +135,7 @@ bool Matrix::operator==(const Matrix &other) {
 }
 
 // analoginczie jak W operatorze == tylko wartosci sa zanegowane
-bool Matrix::operator!=(const Matrix &other) {
+bool Matrix::operator!=(const Matrix &other) const {
 
   if (this == &other) {
     return false;
@@ -163,7 +163,7 @@ Matrix &Matrix::operator=(const Matrix &other) {
   size_x_ = other.size_x_;
   size_y_ = other.size_y_;
 
-  this->arr_ = new double [Size()];
+  this->arr_ = new double[Size()];
   // memcpy - funkcja W standardzie C sluzaca do kopiowania bloku pamieci
   //(jej implementacja ma zlozonosc znaczaco lepsza niz O(n) jaka osiagneli
   // bysmy kopiujac element po elemencie)
@@ -173,7 +173,7 @@ Matrix &Matrix::operator=(const Matrix &other) {
 
 #define CHECK_DIMENTIONS
 
-Matrix Matrix::operator*(const Matrix &other) {
+Matrix Matrix::operator*(const Matrix &other) const {
   // Sytuacja jak W przpadku sprawdzania zakresow tablicy
 #ifdef CHECK_DIMENTIONS
   if (this->size_y_ != other.size_x_) {
@@ -196,7 +196,7 @@ Matrix Matrix::operator*(const Matrix &other) {
   return result;
 }
 
-Matrix Matrix::operator+(const Matrix &other) {
+Matrix Matrix::operator+(const Matrix &other) const {
 #ifdef CHECK_DIMENTIONS
   if (this->size_x_ != other.size_y_) {
     throw wrong_size_exception_;
@@ -217,7 +217,7 @@ Matrix Matrix::operator-(const Matrix &other) const {
   }
   if (this->size_y_ != other.size_y_) {
     throw wrong_size_exception_;
-  }// throw custom exception if wrong sizes
+  }    // throw custom exception if wrong sizes
 #endif // CHECK_DIMENTIONS
   Matrix result(size_x_, size_y_);
   for (unsigned i = 0; i < size_x_ * size_y_; i++) {
@@ -257,7 +257,7 @@ unsigned Matrix::Height() const { return SizeY(); }
 unsigned Matrix::H() const { return SizeY(); }
 unsigned Matrix::Size() const { return SizeX() * SizeY(); }
 
-Matrix Matrix::operator*(double scalar) {
+Matrix Matrix::operator*(double scalar) const {
   Matrix result = *this;
   for (int i = 0; i < Size(); i++) {
     result(i) *= scalar;
@@ -273,7 +273,8 @@ double &Matrix::operator()(unsigned int n) {
   return arr_[n];
 }
 
-// TODO: this will be very slow if many operations are made on the transposed matrix
+// TODO: this will be very slow if many operations are made on the transposed
+// matrix
 //  but takes almost no time to do so needs to be analyzed more carefully
 Matrix Matrix::Transpose() const {
   Matrix result = *this;
