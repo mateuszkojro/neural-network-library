@@ -10,23 +10,27 @@ TEST_CASE("Matrix addition is correct", "[Matrix]") {
   REQUIRE(expected == (A + B));
 }
 
-TEST_CASE("Matrix multiplication is correct", "[Matrix]") {
+TEST_CASE("Square matrix multiplication is correct", "[Matrix]") {
   Matrix A = {{1, 2}, {3, 4}};
   Matrix B = {{1, 2}, {3, 4}};
 
   Matrix expected = {{7, 10}, {15, 22}};
 
   REQUIRE(expected == (A * B));
+}
 
-//  Matrix C = {{1, 2}};
-//  C.Print();
-//
-//  Matrix D = {{1}, {2}};
-//  D.Print();
-//
-//  Matrix expected2 = {{5}};
-//
-//  REQUIRE(expected2 == (C * D));
+TEST_CASE("Rectangle matrix multiplication is correct", "[Matrix]") {
+  Matrix A = {{1, 2}};
+  A.Print();
+
+  Matrix B = {{1}, {2}};
+  B.Print();
+
+  Matrix expected1 = {{5}};
+  REQUIRE(expected1 == (A.Multiply(B)));
+
+  Matrix expected2 = {{1, 2}, {1, 4}};
+  REQUIRE(expected2 == (B.Multiply(A)));
 }
 
 TEST_CASE("Matrix subtraction is correct", "[Matrix]") {
