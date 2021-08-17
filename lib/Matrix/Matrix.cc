@@ -46,10 +46,10 @@ Matrix::Matrix(std::initializer_list<std::initializer_list<double>> init_list) {
 }
 
 Matrix Matrix::Multiply(const Matrix &other) const {
-  unsigned m2 = this->size_x_;
-  unsigned m1 = this->size_y_;
-  unsigned n2 = other.size_x_;
-  unsigned n1 = other.size_y_;
+  unsigned m1 = this->SizeY();
+  unsigned m2 = this->SizeX();
+  unsigned n1 = other.SizeY();
+  unsigned n2 = other.SizeX();
 
   unsigned x, i, j;
   Matrix result(n2, m1);
@@ -204,20 +204,7 @@ Matrix Matrix::operator*(const Matrix &other) const {
     throw wrong_size_exception_;
   }   // throw custom exception if wrong sizes
 #endif// CHECK_DIMENTIONS
-  Matrix result(this->size_x_, other.size_y_);
-
-  for (unsigned x = 0; x < result.size_x_; x++) {
-    for (unsigned y = 0; y < result.size_y_; y++) {
-      // Multiply the x of A by the column of B to At the x, column of product.
-      result(x, y) = 0.0;
-      for (unsigned i = 0; i < this->size_y_; i++) {
-
-        result(x, y) +=
-            this->arr_[CalcAdress(x, i)] * other.arr_[CalcAdress(i, y)];
-      }
-    }
-  }
-  return result;
+  return this->Multiply(other);
 }
 
 Matrix Matrix::operator+(const Matrix &other) const {
