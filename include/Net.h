@@ -25,9 +25,8 @@ public:
   Matrix bias_hidden_;
   Matrix bias_output_;
 
-
-  void feed_forward();
-  void bacpropagate();
+  Matrix FeedForward(const Matrix &A) const;
+  void BacPropagate(const Matrix &input, const Matrix &labels);
   void calculate_error();
 
   Matrix Predict(const Matrix& a) const;
