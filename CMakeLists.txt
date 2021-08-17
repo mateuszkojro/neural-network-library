@@ -21,7 +21,7 @@ target_link_libraries(neural_network_c_ Matrix)
 
 add_subdirectory(lib/Catch2)
 include_directories(lib/Catch2/single_include)
-add_executable(tests tests/TestsMain.cc)
+add_executable(tests tests/TestsMain.cc tests/TestMatrix.cc)
 target_link_libraries(tests PRIVATE
         Matrix
         Catch2::Catch2
