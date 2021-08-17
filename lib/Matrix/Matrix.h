@@ -20,6 +20,10 @@
    liste inicjalizacyjna
 */
 
+class Matrix;
+
+using Vector = Matrix;
+
 class Matrix {
 public:
   Matrix();
@@ -28,11 +32,17 @@ public:
   Matrix(unsigned size_x, unsigned size_y);
   ~Matrix();
 
+  static Matrix RowsXCols(unsigned int n_rows, unsigned int n_cols);
+  static Matrix ColsXRows(unsigned int n_cols, unsigned int n_rows);
+
+  static Vector ColVector(unsigned int size);
+  static Vector RowVector(unsigned int size);
+
   double At(unsigned x, unsigned y) const;
 
   void Set(unsigned x, unsigned y, double value);
-  void Print() const;
-  void ApplyFunction(double (*func)(double));
+  void Print(const std::string &name="") const;
+  Matrix ApplyFunction(double (*func)(double));
 
   unsigned SizeX() const;
   unsigned Width() const;
