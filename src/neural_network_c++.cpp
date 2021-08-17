@@ -16,10 +16,12 @@ int main() {
 
   x_1.Print();
 
-  auto prediction = test.Predict(x_1);
+  auto prediction = test.FeedForward(x_1);
+
+  prediction.Print("Prediction");
 
   test.output_.Print();
-  test.Teach(x_1, x_2);
+  test.BacPropagate(x_1, x_2);
   test.output_.Print();
 }
 
