@@ -32,11 +32,11 @@ public:
 
   void Set(unsigned x, unsigned y, double value);
   void Print() const;
-  bool FastCompare(const Matrix &other);
   void ApplyFunction(double (*func)(double));
 
   unsigned SizeX() const;
   unsigned Width() const;
+  bool FastCompare(const Matrix &other);
   unsigned W() const;
   unsigned Cols() const;
 
@@ -44,6 +44,8 @@ public:
   unsigned Height() const;
   unsigned H() const;
   unsigned Rows() const;
+
+  Matrix Multiply(const Matrix& other) const;
 
   // Uzywam "const Matrix&" W celu unikniecia niepotrzebnych kopii
   Matrix &operator=(const Matrix &other);

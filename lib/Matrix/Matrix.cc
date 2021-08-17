@@ -1,4 +1,5 @@
 #include "Matrix.h"
+#include <cassert>
 
 Matrix::Matrix() {
   size_x_ = 0;
@@ -42,8 +43,25 @@ Matrix::Matrix(std::initializer_list<std::initializer_list<double>> init_list) {
       arr_[i++] = inside;
     }
   }
+}
 
-  std::clog << size_x_ << size_y_ << std::endl;
+Matrix Matrix::Multiply(const Matrix &other) const {
+  unsigned m2 = this->size_x_;
+  unsigned m1 = this->size_y_;
+  unsigned n2 = other.size_x_;
+  unsigned n1 = other.size_y_;
+
+  unsigned x, i, j;
+  Matrix result(n2, m1);
+  for (i = 0; i < m1; i++) {
+    for (j = 0; j < n2; j++) {
+      result(i, j) = 0;
+      for (x = 0; x < m2; x++) {
+        result(j, i) += this->At(x, i) * other.At(j, x);
+      }
+    }
+  }
+  return result;
 }
 
 // what to do when its the same
@@ -61,18 +79,23 @@ Matrix::Matrix(unsigned size_x, unsigned size_y) {
   size_x_ = size_x;
   size_y_ = size_y;
   arr_ = new double[size_x_ * size_y_];
+  memset(arr_, 0, size_x * size_y);
 }
 
 unsigned Matrix::CalcAdress(unsigned x, unsigned y) const {
-  // Konweruje adres W postaci x,y na element tablicy 1 wymiarowej
-  return y * this->size_x_ + x;
+  // Konwertuje adres W postaci x,y na element tablicy 1 wymiarowej
+  assert(x < this->size_x_);
+  assert(y < this->size_y_);
+  unsigned addr = y * this->size_x_ + x;
+  assert(addr < size_x_ * size_y_);
+  return addr;
 }
 
 void Matrix::Set(unsigned x, unsigned y, double value) {
 #ifdef CHECK_BOUNDS
   if (x >= size_x_ || y >= size_y_)
     throw std::out_of_range("You are trying to acces element out of bounds");
-#endif // CHECK_BOUNDS
+#endif// CHECK_BOUNDS
   arr_[CalcAdress(x, y)] = value;
 }
 
@@ -83,11 +106,12 @@ double Matrix::At(unsigned x, unsigned y) const {
 #ifdef CHECK_BOUNDS
   if (x >= size_x_ || y >= size_y_)
     throw std::out_of_range("You are trying to acces element out of bounds");
-#endif // CHECK_BOUNDS
+#endif// CHECK_BOUNDS
   return arr_[CalcAdress(x, y)];
 }
 
 void Matrix::Print() const {
+  std::clog << "Dims: (" << this->size_x_ << "x" << this->size_y_ << ")" << std::endl;
   for (unsigned y = 0; y < size_y_; y++) {
     for (unsigned x = 0; x < size_x_; x++) {
       std::clog << this->At(x, y) << " ";
@@ -104,8 +128,8 @@ bool Matrix::FastCompare(const Matrix &other) {
   // (int) jezeli sa takie same lub pierwszy bajt ktorym sie roznia (>0 jezeli
   // wiekszy W pierwszym bloku) W zwiazku z tym nasz wynik explicitly rzucamy na
   // bool x odwracamy jego wartosc (0(bool) == false)
-  return !(bool)memcmp(other.arr_, this->arr_,
-                       sizeof(double) * size_x_ * size_y_);
+  return !(bool) memcmp(other.arr_, this->arr_,
+                        sizeof(double) * size_x_ * size_y_);
 }
 
 bool Matrix::operator==(const Matrix &other) const {
@@ -178,18 +202,18 @@ Matrix Matrix::operator*(const Matrix &other) const {
 #ifdef CHECK_DIMENTIONS
   if (this->size_y_ != other.size_x_) {
     throw wrong_size_exception_;
-  }    // throw custom exception if wrong sizes
-#endif // CHECK_DIMENTIONS
+  }   // throw custom exception if wrong sizes
+#endif// CHECK_DIMENTIONS
   Matrix result(this->size_x_, other.size_y_);
 
-  for (unsigned y = 0; y < result.size_x_; y++) {
-    for (unsigned x = 0; x < result.size_y_; x++) {
-      // Multiply the y of A by the column of B to At the y, column of product.
-      result(y, x) = 0;
+  for (unsigned x = 0; x < result.size_x_; x++) {
+    for (unsigned y = 0; y < result.size_y_; y++) {
+      // Multiply the x of A by the column of B to At the x, column of product.
+      result(x, y) = 0.0;
       for (unsigned i = 0; i < this->size_y_; i++) {
 
-        result(y, x) +=
-            this->arr_[CalcAdress(y, i)] * other.arr_[CalcAdress(i, x)];
+        result(x, y) +=
+            this->arr_[CalcAdress(x, i)] * other.arr_[CalcAdress(i, y)];
       }
     }
   }
@@ -200,8 +224,8 @@ Matrix Matrix::operator+(const Matrix &other) const {
 #ifdef CHECK_DIMENTIONS
   if (this->size_x_ != other.size_y_) {
     throw wrong_size_exception_;
-  }    // throw custom exception if wrong sizes
-#endif // CHECK_DIMENTIONS
+  }   // throw custom exception if wrong sizes
+#endif// CHECK_DIMENTIONS
   Matrix result(size_x_, size_y_);
   for (unsigned i = 0; i < size_x_ * size_y_; i++) {
     result.arr_[i] = this->arr_[i] + other.arr_[i];
@@ -217,8 +241,8 @@ Matrix Matrix::operator-(const Matrix &other) const {
   }
   if (this->size_y_ != other.size_y_) {
     throw wrong_size_exception_;
-  }    // throw custom exception if wrong sizes
-#endif // CHECK_DIMENTIONS
+  }   // throw custom exception if wrong sizes
+#endif// CHECK_DIMENTIONS
   Matrix result(size_x_, size_y_);
   for (unsigned i = 0; i < size_x_ * size_y_; i++) {
     result.arr_[i] = this->arr_[i] - other.arr_[i];
@@ -230,7 +254,7 @@ double &Matrix::operator()(unsigned x, unsigned y) {
 #ifdef CHECK_BOUNDS
   if (x >= size_x_ || y >= size_y_)
     throw std::out_of_range("You are trying to acces element out of bounds");
-#endif // CHECK_BOUNDS
+#endif// CHECK_BOUNDS
   return arr_[CalcAdress(x, y)];
 }
 
@@ -269,7 +293,7 @@ double &Matrix::operator()(unsigned int n) {
 #ifdef CHECK_BOUNDS
   if (x >= size_x_ || y >= size_y_)
     throw std::out_of_range("You are trying to acces element out of bounds");
-#endif // CHECK_BOUNDS
+#endif// CHECK_BOUNDS
   return arr_[n];
 }
 
