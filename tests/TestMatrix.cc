@@ -16,6 +16,9 @@ TEST_CASE("Square matrix multiplication is correct", "[Matrix]") {
 
   Matrix expected = {{7, 10}, {15, 22}};
 
+  (A * B).Print("A * B");
+  expected.Print("Expected");
+
   REQUIRE(expected == (A * B));
 }
 
@@ -27,10 +30,12 @@ TEST_CASE("Rectangle matrix multiplication is correct", "[Matrix]") {
   B.Print();
 
   Matrix expected1 = {{5}};
-  REQUIRE(expected1 == (A.Multiply(B)));
+  REQUIRE(expected1 == (A * B));
 
-  Matrix expected2 = {{1, 2}, {1, 4}};
-  REQUIRE(expected2 == (B.Multiply(A)));
+  Matrix expected2 = {{1, 2}, {2, 4}};
+
+  (B * A).Print();
+  REQUIRE(expected2 == (B * A));
 }
 
 TEST_CASE("Matrix subtraction is correct", "[Matrix]") {
@@ -55,7 +60,7 @@ TEST_CASE("Matrix transpose is correct", "[Matrix]") {
 
   Matrix expected = {{1, 3}, {2, 4}};
 
-  A.Transpose().Print();
+  A.Transpose().Print("");
 
   REQUIRE(expected == (A.Transpose()));
 }
