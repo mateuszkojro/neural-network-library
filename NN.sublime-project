@@ -1,0 +1,63 @@
+{
+    "folders":
+    [
+        {
+            "path": ".",
+        }
+    ],
+    "settings":
+    {
+        "cmake":
+        {
+            "build_folder": "$folder/build",
+            "command_line_overrides":
+            {
+                "BUILD_SHARED_LIBS": true,
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+            },
+            "generator": "Ninja",
+        },
+    },
+    "build_systems":
+    [
+		{
+			"file_regex": "(.+[^:]):(\\d+):(\\d+): (?:fatal )?((?:error|warning): .+)$",
+			"name": "NN (Linux)",
+			"shell_cmd": "cmake --build .",
+			"syntax": "Packages/CMakeBuilder/Syntax/Ninja.sublime-syntax",
+			"variants":
+			[
+				{
+					"name": "rebuild_cache",
+					"shell_cmd": "cmake --build . --target rebuild_cache"
+				},
+				{
+					"name": "test",
+					"shell_cmd": "cmake --build . --target test"
+				},
+				{
+					"name": "lib/Catch2/test",
+					"shell_cmd": "cmake --build . --target lib/Catch2/test"
+				},
+				{
+					"name": "lib/Catch2/rebuild_cache",
+					"shell_cmd": "cmake --build . --target lib/Catch2/rebuild_cache"
+				},
+				{
+					"name": "Matrix",
+					"shell_cmd": "cmake --build . --target Matrix"
+				},
+				{
+					"name": "all",
+					"shell_cmd": "cmake --build . --target all"
+				},
+				{
+					"name": "clean",
+					"shell_cmd": "cmake --build . --target clean"
+				}
+			],
+			"working_dir": "$folder/build"
+		}
+	],
+}
