@@ -46,6 +46,7 @@ Matrix::Matrix(std::initializer_list<std::initializer_list<double>> init_list) {
 }
 
 // From: https://www.geeksforgeeks.org/c-program-multiply-two-matrices/
+// ***
 Matrix Matrix::Multiply(const Matrix &other) const {
   unsigned m1 = this->SizeY();
   unsigned m2 = this->SizeX();
@@ -279,9 +280,18 @@ Matrix Matrix::operator*(double scalar) const {
   for (int i = 0; i < Size(); i++) {
     result(i) *= scalar;
   }
+
   return result;
 }
 
+
+/**
+ * @brief      Accces elements of the matrix linearly (organised row by row)
+ *
+ * @param[in]  n     0 indexed element of the matrix
+ *
+ * @return     Reference tp n-th element
+ */
 double &Matrix::operator()(unsigned int n) {
 #ifdef CHECK_BOUNDS
   if (n >= Size())
@@ -332,6 +342,13 @@ Vector Matrix::ColVector(unsigned int size) {
   return {1, size};
 }
 
+/**
+ * @brief      Create row vector ([[x,x,x]])
+ *
+ * @param[in]  size  Size of the vector
+ *
+ * @return     Matrix of dimesntions size, 1
+ */
 Vector Matrix::RowVector(unsigned int size) {
   return {size, 1};
 }
