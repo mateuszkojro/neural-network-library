@@ -2,18 +2,6 @@
 	path = lib/Catch2
 	url = https://github.com/catchorg/Catch2
 	branch = v2.x
-[submodule "lib/xtensor"]
-	path = lib/xtensor
-	url = https://github.com/xtensor-stack/xtensor
-[submodule "lib/xtl"]
-	path = lib/xtl
-	url = https://github.com/xtensor-stack/xtl
-[submodule "lib/xtensor-blas"]
-	path = lib/xtensor-blas
-	url = https://github.com/xtensor-stack/xtensor-blas
-[submodule "lib/lapack"]
-	path = lib/lapack
-	url = https://github.com/Reference-LAPACK/lapack
 [submodule "lib/eigen"]
 	path = lib/eigen
 	url = https://gitlab.com/libeigen/eigen
