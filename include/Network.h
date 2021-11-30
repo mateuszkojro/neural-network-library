@@ -34,6 +34,9 @@ class Network {
   const Eigen::MatrixXd &Error();
 
  private:
+
+  Eigen::MatrixXd HadamardProduct(const Eigen::MatrixXd& a,const Eigen::MatrixXd& b);
+
   Eigen::MatrixXd input_bias_;
   Eigen::MatrixXd hidden_bias_;
   Eigen::MatrixXd output_bias_;

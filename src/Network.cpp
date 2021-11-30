@@ -44,6 +44,11 @@ Network::Network(size_t input_size,
     output_bias_.fill(0);
   }
 }
+
+Eigen::MatrixXd Network::HadamardProduct(const Eigen::MatrixXd &a, const Eigen::MatrixXd &b) {
+  return a.cwiseProduct(b);
+}
+
 const Eigen::MatrixXd &Network::FeedForward(const Eigen::MatrixXd &input) {
 
   output_ = input + input_bias_;
