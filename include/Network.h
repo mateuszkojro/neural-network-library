@@ -18,6 +18,37 @@ static double logistic_derivative(double x) {
   return logistic(x) * (1.0 - logistic(x));
 }
 
+static Eigen::MatrixXd BinaryCrossEntropySingleError(Eigen::MatrixXd predicted, Eigen::MatrixXd expected) {
+  assert(predicted.size() == 1 && expected.size() == 1 && "Binary cross entropy requires one value for the result and prediction");
+  Eigen::MatrixXd res(1, 1);
+  res(0) = -(expected(0) * std::log(predicted(0))
+             + (1.0 - expected(0)) * std::log(1.0 - predicted(0)));
+  return res;
+}
+
+static Eigen::MatrixXd BinaryCrossEntropyError(Eigen::MatrixXd predicted, Eigen::MatrixXd expected) {
+  Eigen::MatrixXd res(1, 1);
+
+  for (int i = 0; i < predicted.size(); i++) {
+    res(0) += -(expected(i) * std::log(predicted(i))
+               + (1.0 - expected(i)) * std::log(1.0 - predicted(i)));
+  }
+  return res;
+}
+#ifdef LOG_LOSS
+
+static double softmax(double x, double sum) {
+  return std::exp(x) / std::exp(sum);
+}
+
+#endif
+
+class NetworkLayer {
+ private:
+  size_t input_nodes_;
+  size_t output_nodes_;
+};
+
 class Network {
  public:
   Network(size_t input_size,
@@ -34,8 +65,7 @@ class Network {
   const Eigen::MatrixXd &Error();
 
  private:
-
-  Eigen::MatrixXd HadamardProduct(const Eigen::MatrixXd& a,const Eigen::MatrixXd& b);
+  Eigen::MatrixXd HadamardProduct(const Eigen::MatrixXd &a, const Eigen::MatrixXd &b);
 
   Eigen::MatrixXd input_bias_;
   Eigen::MatrixXd hidden_bias_;
