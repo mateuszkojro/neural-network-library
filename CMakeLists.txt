@@ -18,12 +18,44 @@ target_link_libraries(tests PRIVATE
         Catch2::Catch2
         )
 
-add_subdirectory(lib/eigen)
-include_directories(lib/eigen/)
-include_directories(lib/sciplot/)
+set(LIBRARIES_TO_LINK)
+
+message(CHECK_START "Looking for Eigen")
+set(EIGEN_DIR ${CMAKE_SOURCE_DIR}/lib/eigen/)
+if(EXISTS ${EIGEN_DIR})
+    list(APPEND CMAKE_MESSAGE_INDENT "    ")
+    include_directories(${EIGEN_DIR})
+    add_subdirectory(${EIGEN_DIR})
+    add_compile_definitions(MK_WITH_EIGEN)
+    list(POP_BACK CMAKE_MESSAGE_INDENT)
+    message(CHECK_PASS "found")
+else()
+    message(CHECK_FAIL "not found")
+endif()
+
+message(CHECK_START "Looking for ROOT")
+find_package(ROOT CONFIG)
+if(${ROOT_FOUND})
+    include_directories(ROOT_INCLUDE_DIRS)
+    list(APPEND ROOT::Core ROOT::Gui)
+    add_compile_definitions(MK_WITH_PLOT)
+    message(CHECK_PASS "found")
+else()
+    message(CHECK_FAIL "not found")
+endif()
 
 
-add_executable(network src/Network.cpp src/main.cpp)
+message(CHECK_START "Looking for Sciplot")
+set(SCIPLOT_DIR ${CMAKE_SOURCE_DIR}/lib/sciplot/)
+if(EXISTS ${SCIPLOT_DIR})
+    include_directories(${SCIPLOT_DIR})
+    add_compile_definitions(MK_WITH_PLOT)
+    message(CHECK_PASS "found")
+else()
+    message(CHECK_FAIL "not found")
+endif()
+
+add_executable(network src/Network.cpp src/main.cpp include/LettersDataset.h)
 target_link_libraries(network  ${BLAS_LIBRARIES} ${LAPACK_LIBRARIES})
 
 add_test(NAME Catch2 COMMAND ./tests)
