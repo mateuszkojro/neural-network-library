@@ -69,33 +69,40 @@ const Eigen::MatrixXd &Network::FeedForward(const Eigen::MatrixXd &input) {
   return activation_output_;
 }
 
+static Eigen::MatrixXd SimpleError(const Eigen::MatrixXd &predicted,
+                                   const Eigen::MatrixXd &target) {
+  return target - predicted;
+}
+
 const Eigen::MatrixXd &Network::Backpropagate(const Eigen::MatrixXd &targets,
                                               double learning_rate) {
 
-  assert(targets.x() == activation_output_.x()
-         && targets.y() == activation_output_.y()
-         && "Targets and outputs need to be the same size");
+  output_errors_ = SimpleError(activation_output_, targets);
 
+  Eigen::MatrixXd output_gradients =
+      output_.unaryExpr(activation_function_derivative_);
+  output_gradients = HadamardProduct(output_errors_, output_gradients);
+  output_gradients *= learning_rate;
 
-  output_errors_ = (BinaryCrossEntropyError(activation_output_, targets));
+  auto who_deltas = output_gradients * hidden_.transpose();
+  // Update last
+  hidden_output_weights_ += who_deltas;
 
-  const auto &nabla_b_ho = output_errors_;
-  auto nabla_w_ho = output_errors_ * hidden_.transpose();
+  output_bias_ += output_gradients;
 
-  // TODO(mateusz): Fix the stuff with the hardaman product
-  auto hidden_error = (hidden_output_weights_.transpose() * output_errors_)
-                          .unaryExpr((activation_function_derivative_));
+  auto hidden_errors = hidden_output_weights_.transpose() * output_errors_;
+  Eigen::MatrixXd hidden_gradient =
+      hidden_.unaryExpr(activation_function_derivative_);
+  hidden_gradient = HadamardProduct(hidden_gradient, hidden_errors);
+  hidden_gradient *= learning_rate;
 
-  const auto &nabla_b_ih = hidden_error;
-  auto nabla_w_ih = hidden_error * input_.transpose();
+  auto weights_ih_deltas = hidden_gradient * input_.transpose();
 
-  hidden_output_weights_ -= nabla_w_ho * learning_rate;
-  output_bias_ -= nabla_b_ho * learning_rate;
-
-  input_hidden_weights_ -= nabla_w_ih * learning_rate;
-  hidden_bias_ -= nabla_b_ih * learning_rate;
+  // Update first
+  input_hidden_weights_ += weights_ih_deltas;
+  hidden_bias_ += hidden_gradient;
 
   return output_errors_;
 }
 
-const Eigen::MatrixXd &Network::Error() { return output_errors_; }
+ const Eigen::MatrixXd &Network::Error() { return output_errors_; }

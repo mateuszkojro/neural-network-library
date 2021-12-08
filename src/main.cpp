@@ -119,11 +119,11 @@ int images() {
     labels.push_back(label(0));
     xs.push_back(i);
 
-    std::cout << "Iter: " << i << " Err: " << abs_err.back() << std::endl;
-    std::cout << "Pred: " << out << " Label: " << label << std::endl;
-    if (i == 20) {
-      break;
-    }
+//    std::cout << "Iter: " << i << " Err: " << abs_err.back() << std::endl;
+//    std::cout << "Pred: " << out << " Label: " << label << std::endl;
+//    if (i == 20) {
+//      break;
+//    }
   }
 
 #ifdef MK_WITH_PLOT
